@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_init.c                                         :+:      :+:    :+:   */
+/*   fdf_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/07/14 23:50:23 by folier            #+#    #+#             */
-/*   Updated: 2015/07/15 20:01:43 by folier           ###   ########.fr       */
+/*   Created: 2015/07/15 20:08:23 by folier            #+#    #+#             */
+/*   Updated: 2015/07/15 20:30:35 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-t_fdf		*fdf_init(void)
+void		fdf_error_msg(int op)
 {
-	t_fdf	*fdf;
+	(void)op;
+	ft_putstr("fdf: erreur - ");
+	ft_putstr(strerror(errno));
+	ft_putendl(" -");
+}
 
-	if (!(fdf = (t_fdf *)malloc(sizeof(t_fdf))))
-		return (NULL);
-	if (!(fdf->mlx = mlx_init()))
-		return (NULL);
-	fdf->win = mlx_new_window(fdf->mlx, 420, 420, "fdf");
-	fdf->img = NULL;
-	return (fdf);
+void		fdf_error_exit(int op)
+{
+	(void)op;
+	exit(-1);
 }

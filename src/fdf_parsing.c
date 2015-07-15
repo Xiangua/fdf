@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_init.c                                         :+:      :+:    :+:   */
+/*   fdf_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/07/14 23:50:23 by folier            #+#    #+#             */
-/*   Updated: 2015/07/15 20:01:43 by folier           ###   ########.fr       */
+/*   Created: 2015/07/15 19:58:12 by folier            #+#    #+#             */
+/*   Updated: 2015/07/15 20:31:36 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-t_fdf		*fdf_init(void)
+void				fdf_parsing(char **av, t_fdf *fdf)
 {
-	t_fdf	*fdf;
+	int			i;
+	int			fd;
 
-	if (!(fdf = (t_fdf *)malloc(sizeof(t_fdf))))
-		return (NULL);
-	if (!(fdf->mlx = mlx_init()))
-		return (NULL);
-	fdf->win = mlx_new_window(fdf->mlx, 420, 420, "fdf");
-	fdf->img = NULL;
-	return (fdf);
+	i = 1;
+	(void)fdf;
+	while (av[i])
+	{
+		if ((fd = open(av[i], O_RDONLY)) == -1)
+			fdf_error_msg(3);
+		i++;
+	}
 }

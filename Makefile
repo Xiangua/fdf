@@ -6,7 +6,7 @@
 #    By: folier <folier@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/14 22:51:05 by folier            #+#    #+#              #
-#    Updated: 2015/07/15 08:20:51 by folier           ###   ########.fr        #
+#    Updated: 2015/07/15 20:11:29 by folier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ PTH_LFT = libft
 PTH_MLX = minilibx_macos
 MLX = $(PTH_MLX)/libmlx.a
 LFT = $(PTH_LFT)/libft.a
-SRC = main.c fdf_init.c fdf_put.c
+SRC = main.c fdf_init.c fdf_put.c fdf_parsing.c fdf_error.c
 OBJ = $(patsubst %.c, $(PTH_OBJ)/%.o, $(SRC))
 
 all: $(LFT) $(MLX) $(NAME)
