@@ -6,30 +6,35 @@
 #    By: folier <folier@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/14 22:51:05 by folier            #+#    #+#              #
-#    Updated: 2015/07/15 00:38:44 by folier           ###   ########.fr        #
+#    Updated: 2015/07/15 08:20:51 by folier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 FLAG = -Wall -Werror -Wextra -g
-INCLUDE = -I ./inc -I libft/includes
-LIB = -L/usr/X11/lib -lmlx -lXext -lX11
+INCLUDE = -I ./inc -I libft/includes -I /minilibx_macos
+LIB = -framework OpenGL -framework AppKit
 CC = clang
 PTH_SRC = src
 PTH_OBJ = obj
 PTH_INC = inc
 PTH_LFT = libft
+PTH_MLX = minilibx_macos
+MLX = $(PTH_MLX)/libmlx.a
 LFT = $(PTH_LFT)/libft.a
-SRC = main.c
+SRC = main.c fdf_init.c fdf_put.c
 OBJ = $(patsubst %.c, $(PTH_OBJ)/%.o, $(SRC))
 
-all: $(LFT) $(NAME)
+all: $(LFT) $(MLX) $(NAME)
 
 $(LFT):
-	@make -C libft
+	@make -C $(PTH_LFT)
+
+$(MLX):
+	@make -C $(PTH_MLX)
 
 $(NAME): $(OBJ)
-	@$(CC) $(FLAG) $(OBJ) $(LFT) $(LIB) -o $@
+	@$(CC) $(FLAG) $(OBJ) $(LFT) $(MLX) $(LIB) -o $@
 	@echo " compilation de fdf fini"	
 
 
@@ -39,11 +44,13 @@ $(PTH_OBJ)/%.o: $(addprefix $(PTH_SRC)/, %.c)
 	@$(CC) $(FLAG) -o $@ -c $< $(INCLUDE)
 
 clean:
-	@make -C libft clean
+	@make -C $(PTH_LFT) clean
+	@make -C $(PTH_MLX) clean
 	@rm -rf $(PTH_OBJ)
 
 fclean: clean
-	@make -C libft fclean
+	@make -C $(PTH_LFT) fclean
+	@make -C $(PTH_MLX) clean
 	@rm -f $(NAME)
 
 re: fclean all

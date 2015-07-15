@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fdf_put.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/07/14 23:10:25 by folier            #+#    #+#             */
-/*   Updated: 2015/07/15 07:39:33 by folier           ###   ########.fr       */
+/*   Created: 2015/07/15 07:31:37 by folier            #+#    #+#             */
+/*   Updated: 2015/07/15 08:16:35 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include <fdf.h>
+#define I i[0]
+#define Y i[1]
 
-#include <libft.h>
-#include <mlx.h>
-
-typedef struct		s_fdf
+void		fdf_put(t_fdf *fdf)
 {
-	void			*mlx;
-	void			*win;
-}					t_fdf;
+	int			i[2] = {0, 0};
 
-
-t_fdf				*fdf_init(void);
-void				fdf_put(t_fdf *fdf);
-
-#endif
+	while (I < 40)
+	{
+		while (Y < 40)
+		{
+			ft_putendl("test");
+			mlx_pixel_put(fdf->mlx, fdf->win, 120 + I, 120 + Y, 0xFF0000);
+			Y++;
+		}
+		Y = 0;
+		I++;
+	}
+}

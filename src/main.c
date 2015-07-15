@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/14 23:01:44 by folier            #+#    #+#             */
-/*   Updated: 2015/07/15 00:39:12 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/15 07:44:52 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ int				main(int ac, char **av)
 		return (0);
 	}
 	fdf = fdf_init();
+	fdf_put(fdf);
+	sleep(5);
 	return (0);
 }
