@@ -6,7 +6,7 @@
 #    By: folier <folier@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/12 00:09:44 by folier            #+#    #+#              #
-#    Updated: 2015/07/14 23:48:55 by folier           ###   ########.fr        #
+#    Updated: 2015/07/16 09:34:10 by folier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC = ft_putchar.c ft_putendl.c ft_putnbr.c ft_putstr.c ft_strcpy.c \
 	 aff_rev_list_str.c lst_ascii.c get_next_line.c ft_lstmap.c \
 	 ft_lstclone_elem.c ft_lstclone_list.c ft_lstadd_last.c ft_lstview.c \
 	 ft_create_node_tree.c ft_map_tree.c ft_addnode_tree.c ft_clear_tree.c \
-	 ft_intlength.c
+	 ft_intlength.c ft_strsplit_ac.c
 
 OBJ = $(SRC:.c=.o)
 

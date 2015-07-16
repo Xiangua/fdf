@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/12 00:09:11 by folier            #+#    #+#             */
-/*   Updated: 2015/06/17 12:55:59 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/16 09:33:55 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_itoa(int n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				**ft_strsplit(char const *s, char c);
+char				**ft_strsplit_ac(char const *s, char c, int *);
 int					get_next_line(const int fd, char **line);
 
 /************/
