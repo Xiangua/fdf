@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/14 23:10:25 by folier            #+#    #+#             */
-/*   Updated: 2015/07/19 02:25:42 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/19 10:58:35 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void				fdf_put(t_fdf *fdf);
 void				fdf_parsing(char **, t_fdf *);
 void				fdf_error_msg(int);
 void				fdf_error_exit(int);
+void				fdf_msg(int, const char *);
 t_dlist				*fdf_create_img(char *, t_fdf *);
 void				fdf_destroy_img(t_fdf *, t_dlist *);
 

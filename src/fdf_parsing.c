@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/15 19:58:12 by folier            #+#    #+#             */
-/*   Updated: 2015/07/18 21:38:09 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/19 10:40:01 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void				fdf_parsing(char **av, t_fdf *fdf)
 				fdf_error_msg(4);
 				fdf_destroy_img(fdf, tmp);
 			}
+			else
+				fdf_msg(1, av[i]);
 		}
 		i++;
 	}

@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf_msg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/07/14 23:01:44 by folier            #+#    #+#             */
-/*   Updated: 2015/07/19 10:57:09 by folier           ###   ########.fr       */
+/*   Created: 2015/07/19 10:52:50 by folier            #+#    #+#             */
+/*   Updated: 2015/07/19 10:56:04 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-int				main(int ac, char **av)
+void			fdf_msg(int op, const char *txt)
 {
-	t_fdf		*fdf;
-	if (ac < 2)
-	{
-		ft_putendl("fdf usage: passez un fichier en parametre");
-		return (0);
-	}
-	fdf = fdf_init();
-	fdf_parsing(av, fdf);
-	fdf_put(fdf);
-	mlx_loop(fdf->mlx);
-	return (0);
+	ft_putstr("fdf: le fichier ");
+	ft_putstr(txt);
+	ft_putstr("est accepte");
+	(void)op;
 }

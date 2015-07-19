@@ -6,7 +6,7 @@
 #    By: folier <folier@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/14 22:51:05 by folier            #+#    #+#              #
-#    Updated: 2015/07/18 22:59:32 by folier           ###   ########.fr        #
+#    Updated: 2015/07/19 10:52:40 by folier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ PTH_MLX = minilibx_macos
 MLX = $(PTH_MLX)/libmlx.a
 LFT = $(PTH_LFT)/libft.a
 SRC = main.c fdf_init.c fdf_put.c fdf_parsing.c fdf_error.c fdf_mgr_img.c \
+	  fdf_msg.c
 
 OBJ = $(patsubst %.c, $(PTH_OBJ)/%.o, $(SRC))
 
