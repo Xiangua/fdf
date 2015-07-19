@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_create_dlst.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/11 22:28:13 by folier            #+#    #+#             */
-/*   Updated: 2015/07/18 20:54:44 by folier           ###   ########.fr       */
+/*   Created: 2015/07/18 18:50:21 by folier            #+#    #+#             */
+/*   Updated: 2015/07/18 21:40:47 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
+t_dlist			*ft_create_dlst(void *elem)
 {
-	if (*alst != NULL)
-	{
-		del((*alst)->content, (*alst)->content_size);
-		free(*alst);
-		*alst = NULL;
-	}
+	t_dlist		*dlist;
+
+	if (!(dlist = (t_dlist *)malloc(sizeof(t_dlist))))
+		return (NULL);
+	dlist->next = NULL;
+	dlist->prev = NULL;
+	dlist->content = elem;
+	return (dlist);
 }

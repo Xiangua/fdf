@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/14 23:10:25 by folier            #+#    #+#             */
-/*   Updated: 2015/07/15 20:31:17 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/19 02:25:42 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,20 @@
 #include <stdlib.h>
 #include <mlx.h>
 
+typedef struct		s_elem
+{
+	int				**tab;
+	int				x_max;
+	int				y_max;
+	char			*name;
+	t_list			*t_tab;
+}					t_elem;
+
 typedef struct		s_fdf
 {
 	void			*mlx;
 	void			*win;
-	t_list			*img;
+	t_dlist			*img;
 }					t_fdf;
 
 t_fdf				*fdf_init(void);
@@ -36,5 +45,7 @@ void				fdf_put(t_fdf *fdf);
 void				fdf_parsing(char **, t_fdf *);
 void				fdf_error_msg(int);
 void				fdf_error_exit(int);
+t_dlist				*fdf_create_img(char *, t_fdf *);
+void				fdf_destroy_img(t_fdf *, t_dlist *);
 
 #endif

@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_dlstadd_last.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/11 22:28:13 by folier            #+#    #+#             */
-/*   Updated: 2015/07/18 20:54:44 by folier           ###   ########.fr       */
+/*   Created: 2015/07/18 21:30:54 by folier            #+#    #+#             */
+/*   Updated: 2015/07/18 21:44:37 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
+void			ft_dlstadd_last(t_dlist **dlst, t_dlist *elem)
 {
-	if (*alst != NULL)
-	{
-		del((*alst)->content, (*alst)->content_size);
-		free(*alst);
-		*alst = NULL;
-	}
+	(void)dlst;
+	(void)elem;
 }

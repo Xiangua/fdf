@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/12 00:09:11 by folier            #+#    #+#             */
-/*   Updated: 2015/07/16 09:33:55 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/19 02:28:33 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_dlist
+{
+	void			*content;
+	struct s_dlist	*next;
+	struct s_dlist	*prev;
+}					t_dlist;
 
 typedef struct		s_tree
 {
@@ -91,6 +98,8 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				**ft_strsplit(char const *s, char c);
 char				**ft_strsplit_ac(char const *s, char c, int *);
 int					get_next_line(const int fd, char **line);
+void				ft_strtab_del(char ***);
+int					ft_intlength(long long int n);
 
 /************/
 /*	T_LIST	*/
@@ -111,6 +120,19 @@ t_list				*ft_lstclone_elem(const t_list *elem);
 void				ft_lstview(t_list *list);
 
 /************/
+/*	T_DLIST	*/
+/************/
+
+t_dlist				*ft_create_dlst(void *);
+void				ft_dlstadd_cir(t_dlist **, t_dlist *);
+void				ft_dlstadd_last(t_dlist **, t_dlist *);
+void				ft_dlstadd(t_dlist **, t_dlist *);
+void				ft_dlstiter(t_dlist *, void (*f)(void *));
+void				ft_dlstdel(t_dlist **, void (*f)(void *));
+void				ft_dlstdel_one(t_dlist **, void (*f)(void *));
+void				ft_dlstremove_elem(t_dlist **, t_dlist *, void (*f)(void *));
+
+/************/
 /*	T_TREE	*/
 /************/
 
@@ -119,7 +141,6 @@ void		ft_map_tree(t_tree *, void (*func)(void *));
 void		ft_addnode_tree(t_tree **, t_tree **, t_tree *, int (*func) (void *, void *));
 void		ft_clear_tree(t_tree **, void (*free_content)(void *));
 
-int					ft_intlength(long long int n);
 
 
 #endif /*	END LIBFT_H	*/

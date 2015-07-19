@@ -1,23 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_dlstadd_cir.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/11 22:28:13 by folier            #+#    #+#             */
-/*   Updated: 2015/07/18 20:54:44 by folier           ###   ########.fr       */
+/*   Created: 2015/07/18 19:02:46 by folier            #+#    #+#             */
+/*   Updated: 2015/07/18 21:46:39 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
+void			ft_dlstadd_cir(t_dlist **lstcir, t_dlist *elem)
 {
-	if (*alst != NULL)
+	t_dlist		*tmp;
+	t_dlist		*tmp2;
+
+	tmp2 = NULL;
+	if (!*lstcir)
 	{
-		del((*alst)->content, (*alst)->content_size);
-		free(*alst);
-		*alst = NULL;
+		*lstcir = elem;
+		return ;
+	}
+	tmp = *lstcir;
+	if (!tmp->next)
+	{
+		tmp->next = elem;
+		tmp->prev = elem;
+		elem->next = tmp;
+		elem->prev = tmp;
+	}
+	else {
+		tmp->prev = tmp2;
+		tmp->prev = elem;
+		elem->next = tmp;
+		tmp2->next = elem;
+		elem->prev = tmp2;
 	}
 }
