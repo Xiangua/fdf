@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/15 19:58:12 by folier            #+#    #+#             */
-/*   Updated: 2015/07/19 10:40:01 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/21 23:21:55 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ static int			split_line(t_fdf *fdf, const char *av)
 	tmp = ft_strsplit_ac(av, ' ', &ac);
 	while (i < ac)
 	{
-		if (!(is_string_isalpha(tmp[i])))
+		if (!(is_string_isalpha(tmp[i++])))
 			return (0);
 	}
 	store_in_fdf(fdf, tmp);
-	ft_strtab_del(&tmp);
+	//ft_strtab_del(&tmp);
 	return (1);
 }
 
@@ -68,14 +68,30 @@ static int			read_arg(int fd, t_fdf *fdf)
 	return (1);
 }
 
-void				fdf_parsing(char **av, t_fdf *fdf)
+
+void display_list(t_dlist *list) {
+	t_dlist *tmp;
+	tmp = list;
+	int i = 0;
+
+	ft_putendl("debut display liste");
+	while (i < 10) {
+//		printf("Element %d. Nom : %s", i, ((t_elem *)(tmp->content))->name);
+		printf("Element %d. Nom : %s, Nom suivant : %s, Nom Precedent : %s\n", i, ((t_elem *)(tmp->content))->name,
+			   ((t_elem *)(tmp->next->content))->name, ((t_elem *)(tmp->prev->content))->name);
+		i++;
+		tmp = tmp->next;
+	}
+}
+
+void				fdf_parsing(char **av, t_fdf *fdf, int ac)
 {
 	int			i;
 	int			fd;
 	t_dlist		*tmp;
 
 	i = 1;
-	while (av[i])
+	while (i < ac)
 	{
 		if ((fd = open(av[i], O_RDONLY)) == -1)
 			fdf_error_msg(3);
@@ -86,10 +102,17 @@ void				fdf_parsing(char **av, t_fdf *fdf)
 			{
 				fdf_error_msg(4);
 				fdf_destroy_img(fdf, tmp);
+				printf("Fichier %d KO!\n", i);
 			}
 			else
+			{
+				printf("Fichier %d OK!\n", i);
 				fdf_msg(1, av[i]);
+			}
+			close(fd);
 		}
 		i++;
+		if (i >2)
+			display_list(fdf->img);
 	}
 }

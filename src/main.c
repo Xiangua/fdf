@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/14 23:01:44 by folier            #+#    #+#             */
-/*   Updated: 2015/07/19 10:57:09 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/21 22:29:13 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int				main(int ac, char **av)
 		return (0);
 	}
 	fdf = fdf_init();
-	fdf_parsing(av, fdf);
-	fdf_put(fdf);
-	mlx_loop(fdf->mlx);
+	fdf_parsing(av, fdf, ac);
+//	fdf_put(fdf);
+//	mlx_loop(fdf->mlx);
 	return (0);
 }

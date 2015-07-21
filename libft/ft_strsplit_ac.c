@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/12 00:07:13 by folier            #+#    #+#             */
-/*   Updated: 2015/07/16 09:35:03 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/21 22:37:03 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #define Y i[1]
 #define SIZE_TAB i[2]
 #define INDEX i[3]
-#include <stdio.h>
 
 static int		cnt_word(const char *s, char c)
 {

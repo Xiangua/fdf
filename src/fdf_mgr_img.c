@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/18 18:46:59 by folier            #+#    #+#             */
-/*   Updated: 2015/07/19 10:35:29 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/21 23:24:46 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,23 @@ t_dlist			*fdf_create_img(char *name, t_fdf *fdf)
 	ft_dlstadd_cir(&(fdf->img), dlst);
 	return (dlst);
 }
-
+/*
 static void		destroy_tab(void *tab, size_t size_tab)
 {
 	(void)size_tab;
-	free((int *)tab);
-}
+	(void)tab;
+//	printf("adresse %p\n", tab);
+	//free((int *)tab);
+}*/
 
 static void		destroy_elem(void *elem)
 {
 	t_elem		*tmp;
 
 	tmp = (t_elem *)elem;
-	free(((t_elem *)elem)->name);
-	ft_lstdel(&(tmp->t_tab), destroy_tab);
+	printf("destroy_elem: %s.\n", tmp->name);
+	free(tmp->name);
+	//ft_lstdel(&(tmp->t_tab), destroy_tab);
 }
 
 void			fdf_destroy_img(t_fdf *fdf, t_dlist *elem)

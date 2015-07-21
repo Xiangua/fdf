@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/14 23:10:25 by folier            #+#    #+#             */
-/*   Updated: 2015/07/19 10:58:35 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/21 22:01:41 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct		s_fdf
 
 t_fdf				*fdf_init(void);
 void				fdf_put(t_fdf *fdf);
-void				fdf_parsing(char **, t_fdf *);
+void				fdf_parsing(char **, t_fdf *, int);
 void				fdf_error_msg(int);
 void				fdf_error_exit(int);
 void				fdf_msg(int, const char *);
