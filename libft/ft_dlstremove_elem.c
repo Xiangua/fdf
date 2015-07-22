@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/18 23:05:23 by folier            #+#    #+#             */
-/*   Updated: 2015/07/21 23:23:59 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/22 10:42:25 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void	remove_elem(t_dlist **dlst, t_dlist *elem, void (*del)(void *))
 			tmp->prev->next = tmp2;
 			if (tmp2 == tmp2->next)
 			{
+				ft_putendl("test");
 				tmp2->next = NULL;
 				tmp2->prev = NULL;
 			}

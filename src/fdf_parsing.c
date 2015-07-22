@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/15 19:58:12 by folier            #+#    #+#             */
-/*   Updated: 2015/07/21 23:21:55 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/22 11:08:13 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static int			split_line(t_fdf *fdf, const char *av)
 	int				i;
 
 	i = 0;
+	printf("av: [%s]\n", av);
 	tmp = ft_strsplit_ac(av, ' ', &ac);
 	while (i < ac)
 	{
@@ -61,9 +62,15 @@ static int			read_arg(int fd, t_fdf *fdf)
 	while (ret > 0)
 	{
 		if ((ret = get_next_line(fd, &line)) == -1)
+		{
+			ft_putendl("errer gnl");
 			return (0);
+		}
 		if (!(split_line(fdf, line)))
+		{
+			ft_putendl("errer split_line");
 			return (0);
+		}
 	}
 	return (1);
 }
@@ -76,9 +83,8 @@ void display_list(t_dlist *list) {
 
 	ft_putendl("debut display liste");
 	while (i < 10) {
-//		printf("Element %d. Nom : %s", i, ((t_elem *)(tmp->content))->name);
-		printf("Element %d. Nom : %s, Nom suivant : %s, Nom Precedent : %s\n", i, ((t_elem *)(tmp->content))->name,
-			   ((t_elem *)(tmp->next->content))->name, ((t_elem *)(tmp->prev->content))->name);
+		printf("Element %d. Nom : %s\n", i, ((t_elem *)(tmp->content))->name);
+		//printf("nom: %s\n", ((t_elem *)(tmp->content)));
 		i++;
 		tmp = tmp->next;
 	}
@@ -112,7 +118,7 @@ void				fdf_parsing(char **av, t_fdf *fdf, int ac)
 			close(fd);
 		}
 		i++;
-		if (i >2)
+		if (i > 4)
 			display_list(fdf->img);
 	}
 }
