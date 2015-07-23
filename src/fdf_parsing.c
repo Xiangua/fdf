@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/15 19:58:12 by folier            #+#    #+#             */
-/*   Updated: 2015/07/23 10:45:40 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/23 11:15:37 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,15 @@ static int			split_line(t_fdf *fdf, const char *av)
 	int				i;
 
 	i = 0;
-	printf("av: [%s]\n", av);
 	tmp = ft_strsplit_ac(av, ' ', &ac);
+	if (fdf->x_max < ac)
+		fdf->x_max = ac;
 	while (i < ac)
 	{
 		if (!(is_string_isalpha(tmp[i++])))
 			return (0);
 	}
-	store_in_fdf(fdf, tmp);
+	store_in_fdf(fdf, tmp, ac);
 	//ft_strtab_del(&tmp);
 	return (1);
 }
@@ -65,19 +66,17 @@ static int			read_arg(int fd, t_fdf *fdf)
 	{
 		if ((ret = get_next_line(fd, &line)) == -1)
 		{
-			ft_putendl("errer gnl");
 			err = 0;
 		}
 		if (!(split_line(fdf, line)))
 		{
-			ft_putendl("errer split_line");
 			err = 0;
 		}
 	}
 	return (err);
 }
 
-
+/*
 void display_list(t_dlist *list) {
 	t_dlist *tmp;
 	tmp = list;
@@ -91,12 +90,12 @@ void display_list(t_dlist *list) {
 		tmp = tmp->next;
 	}
 }
+*/
 
 void				fdf_parsing(char **av, t_fdf *fdf, int ac)
 {
 	int			i;
 	int			fd;
-	int			test;
 	t_dlist		*tmp;
 
 	i = 1;
@@ -111,21 +110,13 @@ void				fdf_parsing(char **av, t_fdf *fdf, int ac)
 			{
 				fdf_error_msg(4);
 				fdf_destroy_img(fdf, tmp);
-				printf("Fichier %d KO!\n", i);
 			}
 			else
 			{
-				printf("Fichier %d OK!\n", i);
 				fdf_msg(1, av[i]);
 			}
-			printf("close fd: %d\n", fd);
-			test = close(fd);
-			ft_putnbr(test);
-			ft_putendl("");
-
+			close(fd);
 		}
 		i++;
-		if (i > 4)
-			display_list(fdf->img);
 	}
 }
