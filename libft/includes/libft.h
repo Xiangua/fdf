@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/12 00:09:11 by folier            #+#    #+#             */
-/*   Updated: 2015/07/19 02:28:33 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/23 10:28:14 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@
 # include <sys/uio.h>
 # include <sys/types.h>
 # define BUFF_SIZE 34
+
+typedef struct		s_gnl 
+{
+	char			*rest;
+	size_t			size_rest;
+	int				line;
+	int				read_ret;
+	int				fd;
+	struct s_gnl	*next;
+}					t_gnl;
 
 typedef struct		s_list
 {

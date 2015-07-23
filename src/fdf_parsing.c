@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/15 19:58:12 by folier            #+#    #+#             */
-/*   Updated: 2015/07/22 11:08:13 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/23 10:45:40 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,26 @@ static int			read_arg(int fd, t_fdf *fdf)
 	int			ret;
 	char		*line;
 	int			cnt;
+	int			err;
 
 	ret = 1;
 	cnt = 1;
 	line = NULL;
+	err = 1;
 	while (ret > 0)
 	{
 		if ((ret = get_next_line(fd, &line)) == -1)
 		{
 			ft_putendl("errer gnl");
-			return (0);
+			err = 0;
 		}
 		if (!(split_line(fdf, line)))
 		{
 			ft_putendl("errer split_line");
-			return (0);
+			err = 0;
 		}
 	}
-	return (1);
+	return (err);
 }
 
 
@@ -94,6 +96,7 @@ void				fdf_parsing(char **av, t_fdf *fdf, int ac)
 {
 	int			i;
 	int			fd;
+	int			test;
 	t_dlist		*tmp;
 
 	i = 1;
@@ -115,7 +118,11 @@ void				fdf_parsing(char **av, t_fdf *fdf, int ac)
 				printf("Fichier %d OK!\n", i);
 				fdf_msg(1, av[i]);
 			}
-			close(fd);
+			printf("close fd: %d\n", fd);
+			test = close(fd);
+			ft_putnbr(test);
+			ft_putendl("");
+
 		}
 		i++;
 		if (i > 4)
