@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/14 23:10:25 by folier            #+#    #+#             */
-/*   Updated: 2015/07/21 22:01:41 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/25 21:10:40 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,21 @@ typedef struct		s_fdf
 	t_dlist			*img;
 }					t_fdf;
 
+typedef struct		s_err
+{
+	char			*str1;
+	char			*str2;
+	char			*str3;
+}					t_err;
+
 t_fdf				*fdf_init(void);
 void				fdf_put(t_fdf *fdf);
 void				fdf_parsing(char **, t_fdf *, int);
-void				fdf_error_msg(int);
+void				fdf_lst_to_tab(t_fdf *);
+void				fdf_error_msg(char *,char *, int);
 void				fdf_error_exit(int);
 void				fdf_msg(int, const char *);
-t_dlist				*fdf_create_img(char *, t_fdf *);
-void				fdf_destroy_img(t_fdf *, t_dlist *);
+t_dlist				*fdf_create_img(char *);
+void				fdf_destroy_img(t_dlist **);
 
 #endif

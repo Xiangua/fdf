@@ -6,13 +6,13 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/18 18:46:59 by folier            #+#    #+#             */
-/*   Updated: 2015/07/21 23:24:46 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/25 20:55:30 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-t_dlist			*fdf_create_img(char *name, t_fdf *fdf)
+t_dlist			*fdf_create_img(char *name)
 {
 	t_elem		*elem;
 	t_dlist		*dlst;
@@ -25,7 +25,6 @@ t_dlist			*fdf_create_img(char *name, t_fdf *fdf)
 	elem->y_max = 0;
 	elem->x_max = 0;
 	dlst = ft_create_dlst(elem);
-	ft_dlstadd_cir(&(fdf->img), dlst);
 	return (dlst);
 }
 /*
@@ -33,21 +32,19 @@ static void		destroy_tab(void *tab, size_t size_tab)
 {
 	(void)size_tab;
 	(void)tab;
-//	printf("adresse %p\n", tab);
-	//free((int *)tab);
 }*/
 
-static void		destroy_elem(void *elem)
+void			fdf_destroy_img(t_dlist **img)
 {
-	t_elem		*tmp;
+	t_elem		*elem;
 
-	tmp = (t_elem *)elem;
-	printf("destroy_elem: %s.\n", tmp->name);
-	free(tmp->name);
-	//ft_lstdel(&(tmp->t_tab), destroy_tab);
-}
-
-void			fdf_destroy_img(t_fdf *fdf, t_dlist *elem)
-{
-	ft_dlstremove_elem(&(fdf->img), elem, destroy_elem);
+	elem = (t_elem *)((*img)->content);
+	//free(elem->name);
+//	ft_lstdel(&(elem->t_tab), destroy_tab);
+	if (elem->tab)
+		free(elem->tab);
+	(*img)->next = NULL;
+	(*img)->prev = NULL;
+	//free(*img);
+	*img = NULL;
 }

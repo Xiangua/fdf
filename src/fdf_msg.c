@@ -6,7 +6,7 @@
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/19 10:52:50 by folier            #+#    #+#             */
-/*   Updated: 2015/07/19 20:30:27 by folier           ###   ########.fr       */
+/*   Updated: 2015/07/25 20:15:15 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void			fdf_msg(int op, const char *txt)
 {
-	ft_putstr("fdf: le fichier ");
+	ft_putstr("fdf: le fichier \"");
 	ft_putstr(txt);
-	ft_putendl(" est accepte");
+	ft_putendl("\" est accepte");
 	(void)op;
 }

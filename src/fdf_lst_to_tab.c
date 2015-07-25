@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_init.c                                         :+:      :+:    :+:   */
+/*   fdf_lst_to_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folier <folier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/07/14 23:50:23 by folier            #+#    #+#             */
-/*   Updated: 2015/07/25 21:12:14 by folier           ###   ########.fr       */
+/*   Created: 2015/07/25 18:42:02 by folier            #+#    #+#             */
+/*   Updated: 2015/07/25 20:08:09 by folier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
+#define ELEM ((t_elem *)(img->content))
 
-t_fdf		*fdf_init(void)
+void			fdf_lst_to_tab(t_fdf *fdf)
 {
-	t_fdf	*fdf;
+	t_dlist		*img;
+	int			out;
 
-	if (!(fdf = (t_fdf *)malloc(sizeof(t_fdf))))
-		return (NULL);
-	if (!(fdf->mlx = mlx_init()))
-		return (NULL);
-	fdf->win = mlx_new_window(fdf->mlx, 420, 420, "fdf");
-	fdf->img = NULL;
-	return (fdf);
+	img = fdf->img;
+	out = 1;
+	while (out)
+	{
+		if (fdf->img->prev == img)
+			out = 0;
+		printf("nom: %s, x: %d, y: %d\n", ELEM->name, ELEM->x_max, ELEM->y_max);
+		img = img->next;
+	}
 }
